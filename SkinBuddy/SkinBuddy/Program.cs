@@ -17,9 +17,7 @@ namespace SkinBuddy
     {
 
         private static Menu Config;
-        private static Slider skinValue;
         private static CheckBox enableValue;
-        private static string playerChamp;
 
         static void Main(string[] args)
         {
@@ -33,7 +31,7 @@ namespace SkinBuddy
             try
             {
 
-                playerChamp = Player.Instance.ChampionName;
+                var playerChamp = Player.Instance.ChampionName;
                 if (playerChamp == null) //make sure do not obtain a null value
                     return;
 
@@ -41,7 +39,7 @@ namespace SkinBuddy
                 Config.AddGroupLabel("Skin Buddy");
                 Config.AddLabel("Change Your Champion's Skin");
 
-                skinValue = Config.Add("Change Skin", new Slider("Change Skin", 0, 0, 15));
+                var skinValue = Config.Add("ChangeSkin" + playerChamp, new Slider("Change Skin", 0, 0, 15));
                 enableValue = Config.Add("enableSkin", new CheckBox("Enable"));
 
 
