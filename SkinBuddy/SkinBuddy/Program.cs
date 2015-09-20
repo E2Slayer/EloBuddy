@@ -39,8 +39,9 @@ namespace SkinBuddy
                 Config.AddGroupLabel("Skin Buddy");
                 Config.AddLabel("Change Your Champion's Skin");
 
-                var skinValue = Config.Add("ChangeSkin" + playerChamp, new Slider("Change Skin", 0, 0, 15));
+                var skinValue = Config.Add(playerChamp, new Slider("Change Skin", 0, 0, 15));
                 enableValue = Config.Add("enableSkin", new CheckBox("Enable"));
+
 
 
                 skinValue.OnValueChange += delegate(ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args2)
@@ -52,7 +53,6 @@ namespace SkinBuddy
 
                 if (enableValue.CurrentValue && skinValue.CurrentValue != 0) // checks if the player changed skin before
                     Player.SetSkin(playerChamp, skinValue.CurrentValue);
-
 
             }
             catch (Exception ex)
